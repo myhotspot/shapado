@@ -3,7 +3,7 @@
     %li.questions
       =link_to t("layouts.application.questions"), questions_link
     %li.answers
-      =link_to "Answers", url_for(:answers => 1)
+      =link_to "Ответы", url_for(:answers => 1)
     %li.unanswered
       =link_to t("layouts.application.unanswered"), url_for(:unanswered => 1)
     %li.activity
@@ -11,7 +11,7 @@
 
   %section.filters{:class => @active_subtab }
     %ul
-      %header Sort By:
+      %header Сортировка:
       %li.newest
         = link_to t("questions.index.newest"), url_for(params.merge(:sort=>"newest")), :title => t("questions.index.newest_tooltip")
       %li.hot
