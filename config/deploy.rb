@@ -1,7 +1,7 @@
 # require 'bundler/capistrano'
 
 set :stages, %w(production)
-set :default_stage, "staging"
+set :default_stage, "production"
 
 
 set :application, "ffapi"
