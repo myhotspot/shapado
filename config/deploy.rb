@@ -8,7 +8,7 @@ set :application, "ffapi"
 set :repository,  "git@github.com:smix/zkh.git"
 set :deploy_to, "/var/rails/shapado"
 set :deploy_via, :remote_cache
-set :branch, 'master'
+set :branch, 'next'
 set :scm, :git
 set :scm_verbose, true
 set :use_sudo, false
