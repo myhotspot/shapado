@@ -1,6 +1,6 @@
 
 desc "Fix all"
-task :fixall => [:init, "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config", "fixdb:set_follow_ids", "fixdb:set_friends_lists", "fixdb:fix_twitter_users", "fixdb:fix_facebook_users", "fixdb:create_thumbnails"] do
+task :fixall => [:init, "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config", "fixdb:set_follow_ids", "fixdb:set_friends_lists", "fixdb:fix_twitter_users", "fixdb:fix_facebook_users", "fixdb:create_thumbnails", "fixdb:set_invitations_perms", "fixdb:set_signup_type", "fixdb:set_comment_count"] do
 end
 
 
@@ -293,9 +293,9 @@ namespace :fixdb do
 
   task :set_follow_ids => [:init] do
     p "setting nil following_ids to []"
-    FriendList.collection.update({:following_ids => nil}, {:following_ids => []})
+    FriendList.override({:following_ids => nil}, {:following_ids => []})
     p "setting nil follower_ids to []"
-    FriendList.collection.update({:follower_ids => nil}, {:follower_ids => []})
+    FriendList.override({:follower_ids => nil}, {:follower_ids => []})
     p "done"
   end
 
@@ -343,7 +343,7 @@ namespace :fixdb do
   end
 
   task :create_thumbnails => [:init]  do
-    Group.where.each do |g|
+    Group.all.each do |g|
       begin
         Jobs::Images.generate_group_thumbnails(g.id)
       rescue Mongo::GridFileNotFound => e
@@ -351,4 +351,56 @@ namespace :fixdb do
       end
     end
   end
+
+
+  task :set_invitations_perms => [:init] do
+    p "setting invitations permissions on groups"
+    p "only owners can invite people on private group by default"
+    Group.override({:private => false}, {:invitations_perms => "owner"})
+    p "anyone can invite people on private group by default"
+    Group.override({:private => false}, {:invitations_perms => "user"})
+    p "done"
+  end
+
+  task :set_signup_type => [:init] do
+    p "setting signup type for groups"
+    Group.override({:openid_only => true}, {:signup_type => "noemail"})
+    Group.override({:openid_only => false}, {:signup_type => "all"})
+    p "done"
+  end
+
+  task :set_comment_count => [:init] do
+    User.where.only([:_id,:membership_list, :login]).each do |u|
+      u.membership_list.each do |group_id, vals|
+        count = 0
+        group = Group.where(:_id => group_id).only([:_id, :name]).first
+        next if group.nil?
+
+        group.questions.only([:_id, :"comments.user_id"]).each do |q|
+          q.comments.each do |c|
+            if c.user_id == u.id
+              count =  count + 1
+            end
+          end
+          q.comments = []
+        end
+
+        group.answers.only([:_id, :"comments.user_id"]).each do |a|
+          a.comments.each do |c|
+            puts c.body.inspect
+            if c.user_id == u.id
+              count = count + 1
+            end
+          end
+          a.comments = []
+        end
+
+        u.override({"membership_list.#{group.id}.comments_count" => count})
+        if count > 0
+          p "#{u.login}: #{count} in #{group.name}"
+        end
+      end
+    end
+  end
+
 end

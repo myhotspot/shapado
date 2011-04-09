@@ -4,6 +4,7 @@ Shapado::Application.routes.draw do
              :controllers => {:registrations => 'users', :omniauth_callbacks => "multiauth/sessions"}) do
     match '/users/connect' => 'users#connect', :method => :post, :as => :connect
   end
+  match '/invitations/accept' => 'invitations#accept', :method => :get, :as => :accept_invitation
   match '/disconnect_twitter_group' => 'groups#disconnect_twitter_group', :method => :get
   match '/group_twitter_request_token' => 'groups#group_twitter_request_token', :method => :get
   match 'confirm_age_welcome' => 'welcome#confirm_age', :as => :confirm_age_welcome
@@ -38,6 +39,9 @@ Shapado::Application.routes.draw do
       get :preferred
       get :by_me
       get :contributed
+      get :answers
+      get :follows
+      get :activity
     end
   end
 
@@ -153,6 +157,12 @@ Shapado::Application.routes.draw do
     end
   end
 
+  resources :invitations do
+    member do
+      post :revoke
+    end
+  end
+
   scope '/manage' do
     resources :widgets do
       member do
@@ -174,6 +184,7 @@ Shapado::Application.routes.draw do
       match 'reputation' => :reputation
       match 'domain' => :domain
       match 'content' => :content
+      match 'invitations' => :invitations
     end
   end
 

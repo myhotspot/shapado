@@ -2,7 +2,7 @@
 # This preamble is the current preamble for Rails 3 apps; edit as needed.
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
+gem 'rails', '3.0.6'
 
 if RUBY_PLATFORM !~ /mswin|mingw/
   gem 'rdiscount', '1.6.5'
@@ -84,5 +84,6 @@ group :development do
   gem 'ruby_parser'
   gem 'mongrel', '1.2.0.pre2'
   gem 'niftier-generators', '0.1.2'
+  gem 'ruby-prof'
 end
 
