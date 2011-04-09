@@ -59,6 +59,13 @@ namespace :deploy do
   task :create_log_files do
     run "touch #{shared_path}/log/development.log #{shared_path}/log/production.log #{shared_path}/log/test.log"
   end
+  
+  desc "Create asset packages for production" 
+  task :after_update_code, :roles => [:web] do
+    run <<-EOF
+      cd #{release_path} && RAILS_ENV=#{rails_env} smart_asset
+    EOF
+  end
 end
 
 namespace :db do
