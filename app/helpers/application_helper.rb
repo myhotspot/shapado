@@ -287,8 +287,7 @@ module ApplicationHelper
 
   def clean_seo_keywords(tags, text = "")
     if tags.size < 5
-
-      text.scan(/(\S+)/) do |s|
+      text.scan(/\S+/) do |s|
         word = s.to_s.downcase
         if word.length > 3 && !tags.include?(word)
           tags << word
@@ -331,7 +330,9 @@ module ApplicationHelper
 
   def include_latex
     if current_group.enable_latex
-      require_js domain_url(:custom => current_group.domain)+'/javascripts/jsMath/easy/load.js'
+      require_css 'http://fonts.googleapis.com/css?family=UnifrakturMaguntia'
+      require_css domain_url(:custom => current_group.domain)+'/javascripts/mathscribe/jqmath-0.1.1.css'
+      require_js domain_url(:custom => current_group.domain)+'/javascripts/mathscribe/jqmath-etc-0.1.1.min.js'
     end
   end
 
