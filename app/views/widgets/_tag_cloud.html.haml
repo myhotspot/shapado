@@ -4,9 +4,9 @@
       %hgroup
         %ul
           %li.active
-            =link_to "Популярность"
+            =link_to "#{t 'widgets.tag_cloud.size'}"
           %li
-            =link_to "Алфавит"
+            =link_to "#{t 'widgets.tag_cloud.alphabetically'}"
       .tag_cloud
         = tag_cloud([], {}, widget[:settings][:limit])
     .clear
