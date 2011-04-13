@@ -5,10 +5,10 @@ set :default_stage, "production"
 
 
 set :application, "ffapi"
-set :repository,  "git@github.com:smix/zkh.git"
+set :repository,  "git@github.com:reflow/shapado.git"
 set :deploy_to, "/var/rails/shapado"
 set :deploy_via, :remote_cache
-set :branch, 'next'
+set :branch, 'site'
 set :scm, :git
 set :scm_verbose, true
 set :use_sudo, false
