@@ -35,7 +35,7 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/config/openfire.yml #{release_path}/config/openfire.yml"
     run "ln -nfs #{shared_path}/config/shapado.yml #{release_path}/config/shapado.yml"
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-#     #run "ln -nfs #{shared_path}/.bundle #{release_path}/.bundle"
+    run "ln -nfs #{shared_path}/config/auth_providers.yml #{release_path}/config/auth_providers.yml"
   end
 
   namespace :gems do
@@ -61,7 +61,7 @@ namespace :deploy do
   end
   
   desc "Create asset packages for production" 
-  task :after_update_code, :roles => [:web] do
+  task :smart_asset do
     run <<-EOF
       cd #{release_path} && RAILS_ENV=#{rails_env} smart_asset
     EOF
@@ -162,6 +162,7 @@ namespace :daemons do
 end
 
 after "deploy:update_code", "deploy:symlink_configs"
+after "deploy:update_code", "deploy:smart_asset"
 #after "deploy:update_code", "deploy:migrate"
 #after "deploy:update_code", "deploy:bundle:install"
 after "deploy:setup", "deploy:create_shared_dirs"
