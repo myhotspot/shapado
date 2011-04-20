@@ -402,9 +402,9 @@ class Question
   end
 
   def group_language
-    if self.group.present? && (!self.group.language.nil? && self.group.language != self.language)
-      self.errors.add :language, I18n.t("questions.model.messages.not_group_languages")
-    end
+  #  if self.group.present? && (!self.group.language.nil? && self.group.language != self.language)
+   #   self.errors.add :language, I18n.t("questions.model.messages.not_group_languages")
+    #end
   end
 
   def check_useful

@@ -9,20 +9,16 @@
         = t(".how_to_ask")
       = raw(current_group.question_help)
 %h1
-  Asking new question
+  #{t 'questions.new.title'}
   //i18n
 %p.description
-  Please be descriptive with your question, an be sure your are adding good tags for the searchers
+  #{t 'questions.new.descr'}
   //i18n
 
 - form_for(@question, :html=>{:class => "question-form", :id => "ask_question", :multipart => true}) do |f|
   =render :partial => "form", :locals => {:f => f}
 
   .field.form-options
-    .column
-      .checkbox
-        = f.label :wiki, "Wiki"
-        = f.check_box :wiki
     .column
       .checkbox
         = f.label :anonymous, t("scaffold.post_as_anonymous")

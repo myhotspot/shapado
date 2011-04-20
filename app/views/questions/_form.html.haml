@@ -42,13 +42,9 @@
 
 
 -if current_group.languages.size>1 && AppConfig.enable_i18n
-  .field
-    = f.label :language, t(:language, :scope => "activerecord.attributes.question"), :class => "label"
-    = language_select(f, @question)
-    %small
-      = t(".language_tip")
+  = f.hidden_field :language, :value => "ru"
 -else
-  = f.hidden_field :language, :value => (current_group.language || AppConfig.default_language)
+  = f.hidden_field :language, :value => "ru"
 
 -if current_group.has_adult_content
   .field
