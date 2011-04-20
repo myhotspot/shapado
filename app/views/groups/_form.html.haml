@@ -3,6 +3,7 @@
 .field
   = form.label :name, t('name', :scope => "activerecord.attributes.group"), :class => "label"
   = form.text_field :name, :class => "text_field"
+  = form.hidden_field :language, :value => "ru"
 
 -if @group.new? || !@group.has_custom_domain?
   .field
@@ -62,6 +63,7 @@
         = t(".analytics_legend")
 
 -if !@group.new?
+  = form.hidden_field :language, :value => "ru"
   - if @group.has_custom_analytics
     .field
       = form.label :analytics_engine, t(".analytics_engine"), :class => "label"
@@ -122,20 +124,9 @@
 
 -if AppConfig.enable_i18n
   .field
-    = form.label :language, t(:language, :scope => "activerecord.attributes.group"), :class => "label"
-    = form.select :language, AVAILABLE_LANGUAGES.collect {|lang| [ language_desc(lang), lang ] }, :selected => @group.language || 'ru', :class => "select"
-  .field
-    = form.label :language, t(:languages, :scope => "activerecord.attributes.group"), :class => "label"
-    = link_to t('users.form.show_more_lang'), nil, :class => 'show-more-lang'
-
-    - [DEFAULT_USER_LANGUAGES, AVAILABLE_LANGUAGES-DEFAULT_USER_LANGUAGES].each_with_index do |langs, index|
-      -jsclass = index == 1 ? 'jshide' : ''
-      -langs.sort.each do |lang|
-        #lang_opts
-          .radio_option{:id=>language_desc(lang)}
-            = check_box_tag "group[languages][]", lang, @group.languages.include?(lang), :class => "langbox checkbox #{jsclass}"
-            %label.radio.langbox{:class=>jsclass}
-              = language_desc(lang)
+    = form.label :language, t('.language'), :class => "label"
+    = form.select :language, locales_options, {}, :class => "select"
 -else
-  = form.hidden_field :language, :value => (AppConfig.default_language || 'ru')
+  = form.hidden_field :language, :value => "ru"
+
 

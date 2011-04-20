@@ -80,7 +80,7 @@ class User
   before_create :generate_uuid
   after_create :update_anonymous_user
 
-  validates_inclusion_of :language, :in => AVAILABLE_LOCALES
+  
   validates_inclusion_of :role,  :in => ROLES
 
   with_options :if => lambda { |e| !e.anonymous } do |v|

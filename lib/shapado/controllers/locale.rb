@@ -49,7 +49,7 @@ module Shapado
       def available_locales; AVAILABLE_LOCALES; end
 
       def set_locale
-        locale = AppConfig.default_language || 'en'
+        locale = AppConfig.default_language || 'ru'
         if AppConfig.enable_i18n
           if logged_in?
             locale = current_user.language
