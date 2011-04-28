@@ -1,6 +1,6 @@
 # Messages for Russian (Русский)
 # Exported from translatewiki.net
-# Export driver: syck
+# Export driver: syck-pecl
 # Author: Eleferen
 # Author: G0rn
 # Author: Lockal
@@ -79,8 +79,9 @@ ru:
     new: 
       how_to_ask: Как задавать вопросы
       title: Задать вопрос
-      descr:  Пожалуйста, опишите вопрос как можно точнее и убедитесь, что добавили теги, для удобства поиска
-    question:
+      head: Задаем новый вопрос
+      descr: Пожалуйста, задайте вопрос как можно конкретней, проставьте тэги, чтобы они легко искались
+    question: 
       accepted_tooltip: На этот вопрос есть принятый ответ
       from: От
       continue: Интересно

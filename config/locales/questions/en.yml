@@ -109,7 +109,8 @@ en:
     new:
       title: Ask new question
       how_to_ask: How to ask
-      descr:  Please be descriptive with your question, an be sure your are adding good tags for the searchers
+      head: Asking new question
+      descr: Please be descriptive with your question, an be sure your are adding good tags for the searchers
     create:
       flash_notice: "The question was successfully created."
     update:
