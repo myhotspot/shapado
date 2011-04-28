@@ -60,7 +60,8 @@ en:
       retract_request: "Retract request"
       edit_request: "Edit request"
       follow_up: This Question Is a Follow Up Of
-      followed_by: Followed by:
+      followed_by: Followed by
+      share: Share
       answers_title:
         one: "%{count} answer"
         other: "%{count} answers"

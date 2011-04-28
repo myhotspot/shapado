@@ -209,18 +209,18 @@ function supports_input_placeholder() {
   return 'placeholder' in i;
 }
 
-function init_geolocal(){
-  if (navigator.geolocation) {
-    $('textarea, #question_title').live('focus', function(){
-      navigator.geolocation.getCurrentPosition(function(position){
-          $('.lat_input').val(position.coords.latitude)
-          $('.long_input').val(position.coords.longitude)
-      }, function(){});
-    });
-  } else {
+//function init_geolocal(){
+  //if (navigator.geolocation) {
+   // $('textarea, #question_title').live('focus', function(){
+    //  navigator.geolocation.getCurrentPosition(function(position){
+         // $('.lat_input').val(position.coords.latitude)
+       //   $('.long_input').val(position.coords.longitude)
+     // }, function(){});
+   // });
+ // } else {
       //error('not supported');
-  }
-}
+  //}
+//}
 
 function initFollowTags(){
   console.log('beep')

@@ -150,7 +150,8 @@ ru:
       viewed: просмотрено
       watch_tooltip: Следить за этим вопросом
       follow_up: Этот вопрос - уточнение от
-      followed_by: Этот вопроси интересует:
+      followed_by: Этот вопрос интересует
+      share: Поделиться
     solve: 
       flash_notice: Вопрос был решён.
     tags: 
