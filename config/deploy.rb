@@ -1,6 +1,6 @@
 require 'bundler/capistrano'
 
-set :stages, %w(production)
+set :stages, %w(production mchs)
 set :default_stage, "production"
 
 
@@ -63,7 +63,7 @@ namespace :deploy do
   desc "Create asset packages for production" 
   task :smart_asset do
     run <<-EOF
-      cd #{release_path} && RAILS_ENV=#{rails_env} smart_asset
+      cd #{current_path} && RAILS_ENV=#{rails_env} smart_asset
     EOF
   end
 end
@@ -163,6 +163,7 @@ end
 
 after "deploy:update_code", "deploy:symlink_configs"
 after "deploy:update_code", "deploy:smart_asset"
+after "deploy:smart_asset", "deploy:restart"
 #after "deploy:update_code", "deploy:migrate"
 #after "deploy:update_code", "deploy:bundle:install"
 after "deploy:setup", "deploy:create_shared_dirs"
