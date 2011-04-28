@@ -148,6 +148,8 @@ ru:
       unwatch_tooltip: Перестать следить за этим вопросом
       viewed: просмотрено
       watch_tooltip: Следить за этим вопросом
+      follow_up: Этот вопрос - уточнение от
+      followed_by: Этот вопроси интересует:
     solve: 
       flash_notice: Вопрос был решён.
     tags: 

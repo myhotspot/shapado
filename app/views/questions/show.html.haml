@@ -233,11 +233,11 @@
 
   .followUp-content
     -if @question.follow_up
-      %h1 This Question Is a Follow Up Of
+      %h1 #{t "questions.show.follow_up"}
       = link_to @question.follow_up.original_question.title, question_path(@question.follow_up.original_question)+"##{@question.follow_up.original_answer_id}"
 
     -if @question.followed_up_by.limit(1).count > 0
-      %h1 Followed by:
+      %h1 #{t "questions.show.followed_by"}
       -@question.followed_up_by.all.each do |child|
         = link_to child.title, question_path(child)
 
