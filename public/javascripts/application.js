@@ -6,14 +6,14 @@ $(document).ready(function() {
       window.open(authUrl, 'openid_popup', 'width=790,height=580');
       return false;
   })
-  init_geolocal();
-  $("form.nestedAnswerForm").hide();
-  $("#add_comment_form").hide();
-  $("form").live('submit', function() {
-    var textarea = $(this).find('textarea');
-    removeFromLocalStorage(location.href, textarea.attr('id'));
-    window.onbeforeunload = null;
-  });
+//  init_geolocal();
+//  $("form.nestedAnswerForm").hide();
+//  $("#add_comment_form").hide();
+//  $("form").live('submit', function() {
+//    var textarea = $(this).find('textarea');
+//    removeFromLocalStorage(location.href, textarea.attr('id'));
+//    window.onbeforeunload = null;
+//  });
 
   $('.confirm-domain').submit(function(){
       var bool = confirm($(this).attr('data-confirm'));

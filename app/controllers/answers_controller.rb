@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_filter :login_required, :except => [:show, :index]
+  before_filter :login_required, :except => [:show, :create, :index]
   before_filter :check_permissions, :only => [:destroy]
   before_filter :check_update_permissions, :only => [:edit, :update, :revert]
 
@@ -72,7 +72,7 @@ class AnswersController < ApplicationController
   def create
     @answer = Answer.new
     @answer.safe_update(%w[body wiki anonymous position], params[:answer])
-    @answer.anonymous = params[:answer][:anonymous] || !logged_in?
+    @answer.anonymous = params[:answer][:anonymous]
     @question = current_group.questions.by_slug(params[:question_id])
 
     @answer.question = @question
