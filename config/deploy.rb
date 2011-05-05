@@ -162,8 +162,8 @@ namespace :daemons do
 end
 
 after "deploy:update_code", "deploy:symlink_configs"
-after "deploy:update_code", "deploy:smart_asset"
-after "deploy:smart_asset", "deploy:restart"
+#after "deploy:update_code", "deploy:smart_asset"
+#after "deploy:smart_asset", "deploy:restart"
 #after "deploy:update_code", "deploy:migrate"
 #after "deploy:update_code", "deploy:bundle:install"
 after "deploy:setup", "deploy:create_shared_dirs"
