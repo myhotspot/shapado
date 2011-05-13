@@ -26,6 +26,7 @@ ru:
       questions: Вопросы
   questions: 
     answer: 
+      actions: Действия
       add_comment: Добавить комментарий…
       flag: Отметить
       pick_answer: Выбрать в качестве решения

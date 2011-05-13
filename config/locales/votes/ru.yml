@@ -18,6 +18,11 @@ ru:
       flash_error: Вы не можете голосовать здесь
       flash_notice: Спасибо за то, что проголосовали!
       unauthenticated: Анонимные пользователи не могут голосовать
+      average:
+        one:
+          "%{count} голос"
+        other:
+          "%{count} голосов"
     destroy: 
       flash_notice: Ваш голос успешно отозван.
     model: 
