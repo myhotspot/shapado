@@ -6,6 +6,7 @@
 ru: 
   comments: 
     create: 
+      add: Добавьте комментарии
       flash_notice: Спасибо за ваш комментарий
     edit: 
       title: Редактировать комментарий

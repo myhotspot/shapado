@@ -3,6 +3,7 @@ en:
     edit:
       title: Edit comment
     create:
+      add: Add comment
       flash_notice: Thanks for your comment
     update:
       flash_notice: "Comment was successfully updated."
