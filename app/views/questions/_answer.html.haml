@@ -96,16 +96,17 @@
   .comments
     -answer.comments.each do |comment|
       = render :partial => "comments/comment", :object => comment, :locals => {:source => source, :mini => true}
-
-  #panel-comments
-    -form_for [@question, answer, @comment ||= Comment.new], :html => {:class => "add_answer_comment_link commentForm nestedAnswerForm addNestedAnswer"} do |f|
-      %fieldset
-        %leyend #{t ('comments.create.add')}
-        = render :partial => "comments/form", :locals => {:f => f, :source => source, :commentable => answer }
-        .buttons
-          = link_to t('scaffold.cancel'), '', :class => 'cancel cancel_comment'
-          = t("global.or")
-          = submit_tag t("comments.shared.comment_submit")
-
+  -if logged_in?
+    #panel-comments
+      -form_for [@question, answer, @comment ||= Comment.new], :html => {:class => "add_answer_comment_link commentForm nestedAnswerForm addNestedAnswer"} do |f|
+        %fieldset
+          %leyend #{t ('comments.create.add')}
+          = render :partial => "comments/form", :locals => {:f => f, :source => source, :commentable => answer }
+          .buttons
+            = link_to t('scaffold.cancel'), '', :class => 'cancel cancel_comment'
+            = t("global.or")
+            = submit_tag t("comments.shared.comment_submit")
+  -else
+    = link_to t("questions.show.must_login"),  new_user_session_path
 
 

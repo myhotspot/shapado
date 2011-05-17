@@ -4,7 +4,7 @@ set :stages, %w(zhkh mchs)
 set :default_stage, "zhkh"
 
 
-set :application, "ffapi"
+set :application, "shapado"
 set :repository,  "git@github.com:reflow/shapado.git"
 set :deploy_to, "/var/rails/shapado"
 set :deploy_via, :remote_cache

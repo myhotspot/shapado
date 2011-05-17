@@ -88,7 +88,7 @@ ru:
       continue: Интересно
       answer: Ответить
       followers: интересуется
-      answers_number: '%{quantity} ответов'
+      answers_number: '%{quantity} ответ(а/ов)'
     reward: 
       open: Этот вопрос имеет открытую цену вознаграждения
     retag: 
@@ -154,6 +154,7 @@ ru:
       follow_up: Этот вопрос - уточнение от
       followed_by: Этот вопрос интересует
       share: Поделиться
+      must_login: Авторизируйтесь, что бы оставлять комментарии и отвечать на вопрос.
     solve: 
       flash_notice: Вопрос был решён.
     tags: 
