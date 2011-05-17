@@ -83,6 +83,7 @@ en:
       continue: Continue
       answer: Answer
       followers: followers
+      answers_number: '%{quantity} answers'
     form:
       body_tip: What is your question? Be descriptive.
       language_tip: Select the language the question is asked in.

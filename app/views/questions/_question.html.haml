@@ -45,8 +45,8 @@
     .toolbar
       %ul
         %li.answers
-          = link_to "#{format_number(question.answers_count)} #{t(:answers, :scope => "activerecord.attributes.question")}", question_path(question)
-
+          = link_to t('.answers_number', :quantity => format_number(question.answers_count)), question_path(question)
+        
         -if question.followers_count.to_i > 0
           %li.followers
             = "#{format_number(question.followers_count)} #{t '.followers'}"
