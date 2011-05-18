@@ -39,6 +39,7 @@ gem 'smart_asset'
 gem "whatlanguage", "1.0.0"
 gem "uuidtools", "2.1.1"
 gem "magent", "0.5.2"
+gem "ricodigo-capistrano-recipes"
 
 gem 'goalie', '~> 0.0.4'
 gem 'dynamic_form'
