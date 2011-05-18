@@ -89,6 +89,10 @@ ru:
       answer: Ответить
       followers: интересуется
       answers_number: '%{quantity} ответ(а/ов)'
+      role:
+        admin: Администратор
+        moderator: Модератор
+        editor: Редактор
     reward: 
       open: Этот вопрос имеет открытую цену вознаграждения
     retag: 

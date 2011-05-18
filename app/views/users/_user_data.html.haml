@@ -5,16 +5,14 @@
   
 -if user.owner_of?(current_group)
   %i.owner{:title => "admin"}
-    [ Admin ]
+    [ #{t 'questions.question.role.admin'} ]
   
 -elsif user.mod_of?(current_group)
   %i.mod{:title => "moderator"}
-    [ Moderator ]
+    [ #{t 'questions.question.role.moderator'} ]
       
 -elsif user.editor_of?(current_group)
   %i.editor{:title => "editor"}
-    [ Editor ]
+    [ #{t 'questions.question.role.editor'} ]
       
--else
-  = t('users.deleted')
   
