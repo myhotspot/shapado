@@ -50,7 +50,7 @@ ru:
     edit: Редактировать
     more: Далее…
     new: Добавить %{model}
-    post_as_anonymous: Отправить анонимно
+    post_as_anonymous: Анонимно
     save: Сохранить
     send: Отправить
     show: Показать
