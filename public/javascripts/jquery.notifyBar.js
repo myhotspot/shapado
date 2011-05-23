@@ -38,6 +38,7 @@ $.notifyBar = function(settings)
                   .css("top", "0px")
                   .css("left", "0px")
                   .css("z-index", "32768")
+									.css("background-color", "white")
                   //additional css rules, which you can modify as you wish.
                   .css("font-size", "18px")
                   .css("text-align", "center")
@@ -45,7 +46,7 @@ $.notifyBar = function(settings)
                   .css("height", "30px")
                   .css("border-bottom", "1px solid #bbb");
     if(!settings.barClass){
-      bar.css("background-color", "#dfdfdf")
+      bar.css("background-color", "white")
          .css("color", "#000")
     }
   }
